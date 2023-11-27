@@ -25,11 +25,13 @@ namespace UrbanBikesCompany.Models
 
     }
 
+
+
     public class BikeServiceModelConfiguration : IEntityTypeConfiguration<BikeServiceModel>
     {
         public void Configure(EntityTypeBuilder<BikeServiceModel> builder)
         {
-            builder.HasKey(x => new { x.bs_id });
+            builder.HasKey(x =>  new { x.bs_id });
 
             builder.HasOne(x => x.service).WithMany(x => x.BikeServiceModels).HasForeignKey(x => x.service_id).OnDelete(DeleteBehavior.ClientSetNull);
 
