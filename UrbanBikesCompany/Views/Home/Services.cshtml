@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+@model IEnumerable<UrbanBikesCompany.DTos.BikeServiceDTO>
+
+<html lang="en" xml:lang="en">
+<head>
+    <title>URBAN BIKE WORKS</title>
+   
+    <link href="~/css/style.css" rel="stylesheet" />
+   
+</head>
+
+<body>
+   
+
+    <!-- Main content that should be edited -->
+    <main>
+        <h2 style="text-align: center">Services</h2>
+        <div class="container">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Bike</th>
+                    <th>Price</th>
+                    
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.serviceName</td>
+                        <td>@item.bikename</td>
+                        <td>@item.price</td>
+                       
+                    </tr>
+
+                }
+                
+              
+                <tr class="no-hover">
+                    <td>
+                        <button class="search-btn btnclr" onclick="location.href='@Url.Action("createService","Home")'">
+                            ADD SERVICE
+                        </button>
+                       
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
+<script>
+    function update() {
+        window.location.href = "./UpdateForm.html";
+    }
+</script>
