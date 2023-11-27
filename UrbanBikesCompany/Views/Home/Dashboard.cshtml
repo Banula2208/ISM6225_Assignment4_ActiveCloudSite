@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+@model IEnumerable<UrbanBikesCompany.Models.ServiceOrder>
+
+<html lang="en" xml:lang="en">
+<head>
+    <title>URBAN BIKE WORKS</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+   
+
+    <!-- Main content that should be edited -->
+  
+        <h2 style="text-align: center">Dashboard - Service Orders</h2>
+        <div class="container">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Service</th>
+                    <th>VHR number</th>
+                    <th></th>
+                <th></th>
+                </tr>
+                @foreach(var item in Model)
+                {
+                <tr>
+                    <td>@item.OrderId</td>
+                    <td>@item.Name</td>
+                    <td>@item.bs_id</td>
+                    <td>@item.vehiclenum</td>
+                    <td>
+
+                        <button class="search-btn-dash btnclr" onclick="location.href='@Url.Action("ViewOrder", "Home", new { id = item.OrderId })'">View/Edit</button>
+                       
+                    </td>
+                    <td>
+                        <button class="search-btn-dash btnclr" onclick="location.href='@Url.Action("DeleteOrder","Home", new{@id = item.OrderId})'">Delete</button>
+                       
+                       
+
+                    </td>
+                </tr>
+                }
+               
+               
+                <tr class="no-hover">
+              
+                <td>
+                    <button class="search-btn btnclr" onclick="location.href='@Url.Action("createOrder","Home")'">
+                        CREATE ORDER
+                    </button>
+                </td>
+                </tr>
+            </table>
+        </div>
+  
+</body>
+</html>
+<script>
+  
+</script>
