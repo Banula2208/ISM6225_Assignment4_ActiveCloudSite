@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+@model IEnumerable<MototBikes>
+<html lang="en" xml:lang="en">
+<head>
+    <title>URBAN BIKE WORKS</title>
+
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+
+    <!-- Main content that should be edited -->
+  
+        <h2 style="text-align: center">Bike Models</h2>
+        <div class="container">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Model</th>
+                    <th>Type</th>
+                    <th>View SO's</th>
+                </tr>
+                @foreach(var model in Model)
+                {
+                <tr>
+                    <td>@Html.DisplayFor(x=>model.bikeId)</td>
+                    <td>@Html.DisplayFor(x=>model.bikeName)</td>
+                    <td>@Html.DisplayFor(x=>model.type)</td>
+                    <td>
+                        <button class="signform-submit-btn" onclick="location.href='@Url.Action("GetSOrderById","Home",new { id = model.bikeId })'">
+                           View
+                        </button>
+                    </td>
+                </tr>
+                }
+            
+            </table>
+        </div> 
+</body>
+</html>
+<script>
+    function viewSOs() {
+        window.location.href = "./AllSos.html";
+    }
+</script>
