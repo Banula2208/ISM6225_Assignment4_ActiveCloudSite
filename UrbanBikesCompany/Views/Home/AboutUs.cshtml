@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xml:lang="en">
+<head>
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+       
+
+        <!-- Main content that should be edited -->
+        <div class="about-section">
+            <h3 class="text-style">ABOUT US</h3>
+            <div class="about-article-container">
+                <img src="~/Images/Arun.jpg"
+                     width="100px" />
+                <h2>Dinesh Datta Pendyala</h2>
+                <p>
+                    Created a Home page for the website. I contributed to the navigation aspects of the homepage . Also built models and controllers for the project
+                </p>
+            </div>
+
+            <div class="about-article-container">
+                <img src="~/Images/Sampreeth.jpg"
+                     width="100px" />
+                <h2>Sampreeth Maturi</h2>
+                <p>
+                    Worked on the services page, created a dashboard for the services offered. Also, implemented CRUD operations for this page and worked on views , tables.
+                </p>
+            </div>
+
+            <div class="about-article-container">
+                <img src="~/Images/Dinesh.jpg"
+                     width="100px" />
+                <h2>Arun Kumar Pathipati</h2>
+                <p>
+                    Created a Dashboard page for the service orders. Also, implemented CRUD operations for this service orders page and worked on models and views .
+                </p>
+            </div>
+
+            <div class="about-article-container">
+                <img src="~/Images/Sandeep.jpg"
+                     width="100px" />
+                <h2>Sandeep Banula</h2>
+                <p>
+                    Worked on About Us Page ,  Created Entity-Relationship diagram. Also, built a graph which shows the service percentages of different bikes and worked on views , tables .
+                </p>
+            </div>
+
+        </div>
+        <h3 class="text-style">BIKE TYPE SERVICE PERCENTAGES</h3>
+        <div class="">
+            <div class="d3js12 image" style="width: auto;">
+
+
+                <div class="margin-about">
+                    <h3></h3>
+
+
+                    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+                    <svg id="chart" width="auto" height="400" class="chart"></svg>
+                </div>
+
+
+
+            </div>
+            <style>
+                h3 {
+                    font-size: 1.5em;
+                    text-align: center;
+                }
+
+                .d3js12 {
+                    text-align: center;
+                }
+
+                svg text {
+                    font-size: 16px;
+                }
+            </style>
+        </div>
+    </div>
+    <h3 class="text-style">ENTITY RELATION DIAGRAM</h3>
+
+
+    <div class="img-container margin-left-twefi">
+        <div class="image ">
+            <img src="~/Images/erpicd.jpg"></img>
+        </div>
+    </div>
+
+    </div>
+    <div>
+        <h3 class="text-style">GITHUB LINK</h3>
+        <ul class="">
+            <li>
+                <label class="">
+                    https://github.com/Banula2208/ISM6225_Assignment4_ActiveCloudSite
+                </label>
+            </li>
+            </ul>
+    </div>
+    <div class="">
+        <h3 class="text-style">API ENDPOINTS</h3>
+        <div class="table-about">
+            <div class="table-content" id="table-content-purchase">
+
+                <ul class="li-about">
+                    <li><b>End Point:</b> https://motorcycles-by-api-ninjas.p.rapidapi.com/v1/motorcycles?make=Kawasaki&model=Ninja</li>
+
+                    <li><b>KEY</b>  d3d998a782mshd5354a54cd09284p1b522ejsn43b7af1e5eee</li>
+                    <li><b>HOST:</b>  https://motorcycles-by-api-ninjas.p.rapidapi.com/</li>
+                </ul>
+
+
+                <div class="table-row">
+                    <div class="table-data"><b></b></div>
+                    <div class="table-data-about"></div>
+
+                </div>
+                <div class="table-row">
+                    <div class="table-data"><b></b></div>
+                    <div class="table-data-about"></div>
+                </div>
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+
+    </div>
+</body>
+</html>
+
+<script type="text/javascript"
+        src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script>
+
+
+    $(document).ready(function () {
+
+        debugger;
+
+        var resultdata = {};
+
+        $.ajax({
+            url: '/Home/GetChartData', 
+            type: 'GET', 
+            success: function (result) {
+                debugger;
+                
+                resultdata = result;
+               
+                console.log(resultdata);
+
+                const data = [
+                    { rating: "Sport", percentage: resultdata.sport },
+                    { rating: "Sport Touring", percentage: resultdata.sportTouring },
+                    
+                ];
+
+               const chart = d3.select("#chart");
+
+        const margin = { top: 20, right: 50, bottom: 100, left: 50 }; // Adjusted right and left margins
+        const width = 500 - margin.left - margin.right;
+        const height = 400 - margin.top - margin.bottom;
+
+        const xScale = d3
+            .scaleBand()
+            .domain(data.map((d) => d.rating))
+            .range([0, width])
+            .padding(0.1);
+
+        const yScale = d3.scaleLinear().domain([0, 100]).range([height, 0]); // Reversed the range for yScale
+
+        // Create the x and y axes
+        const xAxis = d3.axisBottom(xScale); // Changed to xScale
+        const yAxis = d3.axisLeft(yScale);
+
+        // Create a new group for the chart
+        const g = chart
+            .append("g")
+            .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+        // Create the columns (changed "rect" to "rect")
+        g.selectAll(".column")
+            .data(data)
+            .enter()
+            .append("rect") // Changed to "rect"
+            .attr("class", "column") // Changed to "column"
+            .attr("x", (d) => xScale(d.rating)) // Use xScale for x position
+            .attr("y", (d) => yScale(d.percentage)) // Use yScale for y position
+            .attr("width", xScale.bandwidth())
+            .attr("height", (d) => height - yScale(d.percentage)); // Adjusted the height calculation
+
+        // Add the x and y axes
+        g.append("g")
+            .attr("class", "axis")
+            .attr("transform", `translate(0, ${height})`)
+            .call(xAxis);
+        g.append("g").attr("class", "axis").call(yAxis);
+            },
+            error: function (error) {
+                // Handle any errors
+                console.error(error);
+            }
+        });
+       
+        
+
+    })
+</script>
+
+
