@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+@model IEnumerable<ServiceOrder>
+<html lang="en" xml:lang="en">
+<head>
+    <title>URBAN BIKE WORKS</title>
+
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+
+    <!-- Main content that should be edited -->
+
+    <h2 style="text-align: center">Bike Models</h2>
+    <div class="container">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Vehicle Number</th>
+                <th>Delivery Date</th>
+                <th>Recieved Date</th>
+                <th>Contact</th>
+            </tr>
+            @foreach (var model in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(x=>model.OrderId)</td>
+                    <td>@Html.DisplayFor(x=>model.Name)</td>
+                    <td>@Html.DisplayFor(x=>model.vehiclenum)</td>
+                    <td>@Html.DisplayFor(x=>model.deliveryDate)</td>
+                    <td>@Html.DisplayFor(x=>model.recievedDate)</td>
+                    <td>@Html.DisplayFor(x=>model.Contact)</td>
+                   
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>
+
