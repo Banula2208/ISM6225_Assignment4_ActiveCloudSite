@@ -16,6 +16,13 @@ namespace UrbanBikesCompany.Models
 
         public ServiceModel service { get; set; }
 
+        public MototBikes bike { get; set; }
+
+        public virtual ServiceOrder? ServiceOrder { get; set; }
+
+        public int? OrderId { get; set; }
+
+
 
     }
 
