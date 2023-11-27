@@ -9,6 +9,22 @@ using UrbanBikesCompany.Models;
 
 namespace UrbanBikesCompany.Controllers
 {
+    public class HomeController : Controller
+    {
+        private readonly ILogger<HomeController> _logger;
+        static string url = "https://motorcycles-by-api-ninjas.p.rapidapi.com/v1/motorcycles?make=Kawasaki&model=Ninja";
+        static string api_key = "d3d998a782mshd5354a54cd09284p1b522ejsn43b7af1e5eee";
+        static string host = "motorcycles-by-api-ninjas.p.rapidapi.com/";
+        HttpClient httpClient;
+        public Context dbContext;
+
+
+
+        public HomeController(ILogger<HomeController> logger, Context context)
+        {
+            _logger = logger;
+            dbContext = context;
+        }
 
 
         public async Task<IActionResult> Index()
