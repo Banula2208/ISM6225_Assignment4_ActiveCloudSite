@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+@model UrbanBikesCompany.DTos.OrderDTO
+<html lang="en" xml:lang="en">
+<head>
+    <title>URBAN BIKE WORKS</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+   
+
+ 
+        <div class="sign-container">
+             @using (Html.BeginForm("UpdateOrder", "Home", FormMethod.Post))
+             {
+                 @Html.HiddenFor(x=>x.OrderId)
+                 @Html.HiddenFor(x=>x.bs_id)
+            <div class="signform">
+                <h2 class="signform-heading">Service Order Details</h2>
+                <div class="signform-group">
+                    <label for="username">CustomerName</label>
+                    @Html.TextBoxFor(x=>x.Name)
+                   
+                </div>
+                <div class="signform-group">
+                    <label for="email">Service</label>
+                @Html.DropDownListFor(model => model.bs_id, (IEnumerable<SelectListItem>)ViewBag.bikeservicecreateType, "Select an option")
+                </div>
+                
+                <div class="signform-group">
+                    <label for="password">VHR Number</label>
+                    @Html.TextBoxFor(x=>x.vehiclenum)
+                </div>
+                <div class="signform-group">
+                    <label for="password">Received Date</label>
+                @Html.TextBoxFor(x=>x.recievedDate)
+                </div>
+                <div class="signform-group">
+                    <label for="password">Delivery Date</label>
+                @Html.TextBoxFor(x=>x.deliveryDate)
+                </div>
+                <div class="signform-group">
+                    <label for="password">Contact</label>
+                 @Html.TextBoxFor(x=>x.Contact)
+                </div>
+                <div class="popup">
+                    <h2>Request submitted successfully!</h2>
+                    <button id="close-popup" class="signform-submit-btn-green">
+                        Ok
+                    </button>
+                </div>
+
+                <div class="signform-btn">
+                    <button class="signform-submit-btn" onclick="location.href='@Url.Action("Dashboard","Home")'">
+                        Cancel
+                    </button>
+
+                   
+
+                   
+
+                    <button class="signform-submit-btn-green"
+                            id="signform-submit-btn-green"
+                            type="submit">
+                        Update
+                    </button>
+                </div>
+            </div>
+            }
+        </div>
+  
+</body>
+</html>
