@@ -9,11 +9,11 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = UrbanBikesCompany
 build_property.RootNamespace = UrbanBikesCompany
-build_property.ProjectDir = C:\Users\sampr\Source\Repos\ISM6225_Assignment4_ActiveCloudSite\UrbanBikesCompany\
+build_property.ProjectDir = C:\Users\sampr\source\repos\ISM6225_Assignment4_ActiveCloudSite\UrbanBikesCompany\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\sampr\Source\Repos\ISM6225_Assignment4_ActiveCloudSite\UrbanBikesCompany
+build_property.MSBuildProjectDirectory = C:\Users\sampr\source\repos\ISM6225_Assignment4_ActiveCloudSite\UrbanBikesCompany
 build_property._RazorSourceGeneratorDebug = 
 
 [C:/Users/sampr/source/repos/ISM6225_Assignment4_ActiveCloudSite/UrbanBikesCompany/Views/Home/AboutUs.cshtml]
@@ -38,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/sampr/source/repos/ISM6225_Assignment4_ActiveCloudSite/UrbanBikesCompany/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sampr/source/repos/ISM6225_Assignment4_ActiveCloudSite/UrbanBikesCompany/Views/Home/Services.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZXJ2aWNlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sampr/source/repos/ISM6225_Assignment4_ActiveCloudSite/UrbanBikesCompany/Views/Shared/Error.cshtml]
